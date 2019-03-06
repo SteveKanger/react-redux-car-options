@@ -1,9 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { push } from 'connected-react-router'
-import Aside from './components/Aside'
 import data from '../data'
-import {setInterior, removeInterior, changePage } from '../modules/actions'
+
+//imported functions
+import {setInterior, removeInterior, changePage } from '../modules/actions/vehicleActions'
+
+//imported componenets
+import Configuration from './components/Configuration'
 
 const ConfigInterior = props => (
   <div className="container">
@@ -16,14 +19,18 @@ const ConfigInterior = props => (
         {data.interior.map(opt => {
           if(props.interiorOpts.some(item => item.id === opt.id)){
             return (
-              <div className="config-item active" key={opt.id} onClick={() => props.removeInterior(opt.id, opt.price)}>
-                {opt.name} <span>${opt.price.toLocaleString()}</span>
+              <div className="config-item" key={opt.id} onClick={() => props.removeInterior(opt.id, opt.price)}>
+                <div className="checkbox checked"></div> 
+                {opt.name} 
+                <span>${opt.price.toLocaleString()}</span>
               </div>
             )
           }else{
             return (
               <div className="config-item" key={opt.id} onClick={() => props.setInterior(opt.id, opt.name, opt.price)}>
-                {opt.name} <span>${opt.price.toLocaleString()}</span>
+                <div className="checkbox"></div> 
+                {opt.name} 
+                <span>${opt.price.toLocaleString()}</span>
               </div>
             )
           }
@@ -31,20 +38,20 @@ const ConfigInterior = props => (
 
       </div>
       <div className="col md-4">
-        <Aside/>
+        <Configuration/>
       </div>
     </div>
   </div>
 )
 
 const mapStateToProps = state => ({
-  interiorOpts: state.interiorOpts
+  interiorOpts: state.vehicle.interiorOpts
 })
 
 const mapDispatchToProps = {
-  setInterior: setInterior,
-  removeInterior: removeInterior,
-  changePage: changePage
+  setInterior,
+  removeInterior,
+  changePage
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ConfigInterior)

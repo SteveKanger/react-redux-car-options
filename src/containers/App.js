@@ -7,15 +7,19 @@ import ConfigColor from './ConfigColor'
 import ConfigEngine from './ConfigEngine'
 import ConfigInterior from './ConfigInterior'
 import ConfigExterior from './ConfigExterior'
+import ShowConfig from './ShowConfig'
+import Checkout from './Checkout'
+import Login from './Login'
+import Signup from './Signup'
 
 const App = () => {
   return (
     <div className="App">
       <header>
-        <p>Configure Your Ride</p>
+        <Link className="logo" to="/">Automobile<span className="pink">/</span><span>Config</span></Link>
         <div>
-          <Link to="/">Login</Link>
-          <Link to="/">SignUp</Link>
+          <Link to="/login">Login</Link>
+          <Link to="/signup">SignUp</Link>
         </div>
       </header>
       <main>
@@ -24,6 +28,10 @@ const App = () => {
         <Route exact path="/config-engine" component={ConfigEngine} />
         <Route exact path="/config-interior" component={ConfigInterior} />
         <Route exact path="/config-exterior" component={ConfigExterior} />
+        <Route exact path="/show-config" component={ShowConfig} />
+        <Route exact path="/checkout" component={Checkout} />
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/signup" component={Signup} />
       </main>
       <footer>
         <p>&copy; <span>{new Date().getFullYear()}</span> Design by Steve Kanger</p>

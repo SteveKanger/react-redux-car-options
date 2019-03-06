@@ -2,20 +2,14 @@ import { createStore, applyMiddleware, compose } from 'redux'
 import { connectRouter, routerMiddleware } from 'connected-react-router'
 import thunk from 'redux-thunk'
 import createHistory from 'history/createBrowserHistory'
-import RootReducer from './modules/reducer'
-import { loadState, saveState } from './localStorage';
+import RootReducer from './reducers'
+import { loadState, saveState } from './localStorage'
 
 export const history = createHistory()
 
 const storageState = loadState()
-const initialState = storageState ? storageState : {
-  vehicleChosen: '',
-  colorChosen: '',
-  engineChosen: '',
-  interiorOpts: [],
-  exteriorOpts: [],
-  totalPrice: ''
-}
+const initialState = storageState ? storageState : {}
+
 const enhancers = []
 const middleware = [thunk, routerMiddleware(history)]
 

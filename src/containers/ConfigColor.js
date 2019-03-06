@@ -1,10 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import data from '../data'
-import {setColor} from '../modules/actions'
+
+//imported functions
+import { setColor } from '../modules/actions/vehicleActions'
 
 //imported components
-import Aside from './components/Aside'
+import Configuration from './components/Configuration'
 
 const ConfigColor = props => (
   <div className="container">
@@ -13,20 +15,25 @@ const ConfigColor = props => (
         <h1>Select Your Color</h1>
         {data.colors.map(color => (
           <div className="config-item" key={color.hex} onClick={() => props.setColor(color.hex, color.name)}>
+            <div className={props.colorChosen.hex === color.hex ? "checkbox checked" : "checkbox"}></div>
             {color.name}
             <span className="color" style={{background: color.hex}}></span>
           </div>
         ))}
       </div>
       <div className="col md-4">
-        <Aside/>
+        <Configuration/>
       </div>
     </div>
   </div>
 )
 
+const mapStateToProps = state => ({
+  colorChosen: state.vehicle.colorChosen
+})
+
 const mapDispatchToProps = {
-  setColor: setColor
+  setColor
 }
 
-export default connect(null, mapDispatchToProps)(ConfigColor)
+export default connect(mapStateToProps, mapDispatchToProps)(ConfigColor)

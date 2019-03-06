@@ -1,5 +1,3 @@
-import initialState from '../store.js'
-
 export const CHOOSE_VEHICHLE = 'CHOOSE_VEHICHLE'
 export const SET_COLOR = 'SET_COLOR'
 export const SET_ENGINE = 'SET_ENGINE'
@@ -7,9 +5,8 @@ export const SET_INTERIOR = 'SET_INTERIOR'
 export const REMOVE_INTERIOR = 'REMOVE_INTERIOR'
 export const SET_EXTERIOR = 'SET_EXTERIOR'
 export const REMOVE_EXTERIOR = 'REMOVE_EXTERIOR'
-export const RESET_VEHICHLE = 'RESET_VEHICHLE'
 
-export default (state = initialState, action) => {
+export default (state = {}, action) => {
   switch (action.type) {
     case CHOOSE_VEHICHLE:
       return {
@@ -56,17 +53,6 @@ export default (state = initialState, action) => {
         exteriorOpts: state.exteriorOpts.filter(opt => opt.id !== action.payload.id),
         totalPrice: state.totalPrice - action.payload.price
       }
-    case RESET_VEHICHLE:
-      return {
-        ...state,
-        vehicleChosen: '',
-        colorChosen: '',
-        engineChosen: '',
-        interiorOpts: [],
-        exteriorOpts: [],
-        totalPrice: ''
-      }
-
     default:
       return state
   }

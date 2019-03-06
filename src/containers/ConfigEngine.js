@@ -1,9 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { setEngine } from '../modules/actions'
+
+//imported functions
+import { setEngine } from '../modules/actions/vehicleActions'
 
 //imported components
-import Aside from './components/Aside'
+import Configuration from './components/Configuration'
 
 const ConfigEngine = props => (
   <div className="container">
@@ -12,23 +14,26 @@ const ConfigEngine = props => (
         <h1>Select Your DriveTrain</h1>
         {props.engines.map(engine => (
           <div className="config-item" key={engine.id} onClick={() => props.setEngine(engine.id, engine.name, engine.price)}>
-            {engine.name} <span>${engine.price.toLocaleString()}</span>
+            <div className={props.engineChosen.id === engine.id ? "checkbox checked" : "checkbox"}></div>
+            {engine.name} 
+            <span>${engine.price.toLocaleString()}</span>
           </div>
         ))}
       </div>
       <div className="col md-4">
-        <Aside/>
+        <Configuration/>
       </div>
     </div>
   </div>
 )
 
 const mapStateToProps = state => ({
-  engines: state.vehicleChosen.engine
+  engines: state.vehicle.vehicleChosen.engine,
+  engineChosen: state.vehicle.engineChosen
 })
 
 const mapDispatchToProps = {
-  setEngine: setEngine
+  setEngine
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ConfigEngine)

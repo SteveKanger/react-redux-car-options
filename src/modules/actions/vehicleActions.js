@@ -1,12 +1,11 @@
 import { push } from 'connected-react-router'
-import { CHOOSE_VEHICHLE } from "./reducer";
-import { SET_COLOR } from "./reducer";
-import { SET_ENGINE } from "./reducer";
-import { SET_INTERIOR } from "./reducer";
-import { REMOVE_INTERIOR } from "./reducer";
-import { SET_EXTERIOR } from "./reducer";
-import { REMOVE_EXTERIOR } from "./reducer";
-import { RESET_VEHICHLE } from "./reducer";
+import { CHOOSE_VEHICHLE } from "../reducers/vehicleReducer";
+import { SET_COLOR } from "../reducers/vehicleReducer";
+import { SET_ENGINE } from "../reducers/vehicleReducer";
+import { SET_INTERIOR } from "../reducers/vehicleReducer";
+import { REMOVE_INTERIOR } from "../reducers/vehicleReducer";
+import { SET_EXTERIOR } from "../reducers/vehicleReducer";
+import { REMOVE_EXTERIOR } from "../reducers/vehicleReducer";
 
 export const changePage = (page) => dispatch => {
   dispatch(push(page))
@@ -91,8 +90,3 @@ export const removeExterior = (id, price) => dispatch => {
   })
 }
 
-export const resetVehicle = () => dispatch => {
-  dispatch({
-    type: RESET_VEHICHLE
-  })
-}

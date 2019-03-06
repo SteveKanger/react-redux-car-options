@@ -1,5 +1,7 @@
 import React from 'react'
 import data from '../data'
+
+//imported componenets
 import VehicleBox from './components/VehicleBox'
 
 const Home = () => (

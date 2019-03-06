@@ -63,6 +63,7 @@ export default {
     {hex: '#85C1E9', name: 'Sky Blue'},
     {hex: '#34495E', name: 'Navy Blue'},
     {hex: '#D68910', name: 'Orange'},
+    {hex: '#f9f900', name: 'Yellow'},
     {hex: '#BFC9CA', name: 'Light Grey'},
     {hex: '#424949', name: 'Dark Grey'},
     {hex: '#000000', name: 'Black'}

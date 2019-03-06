@@ -1,6 +1,8 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import { setVehicle } from '../../modules/actions'
+
+//imported functions
+import { setVehicle } from '../../modules/actions/vehicleActions'
 
 const VehicleBox = props => (
   <div className="col md-4 sm-6" style={{display:'flex', flexDirection:'column'}}>
@@ -17,7 +19,7 @@ const VehicleBox = props => (
 )
 
 const mapDispatchToProps = {
-  setVehicle: setVehicle
+  setVehicle
 }
 
 export default connect(null, mapDispatchToProps)(VehicleBox)
