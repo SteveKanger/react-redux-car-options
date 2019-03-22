@@ -1,11 +1,22 @@
 ## Get started
 
-```npm install
+```bash
+npm install
+```
+
 or
+
+```bash
 yarn install
 ```
 
 then
+
+```bash
+npm start
+```
+
+or
 
 ```bash
 yarn start
