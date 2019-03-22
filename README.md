@@ -1,7 +1,11 @@
 ## Get started
-npm install
-or 
+
+```npm install
+or
 yarn install
+```
+
+then
 
 ```bash
 yarn start
