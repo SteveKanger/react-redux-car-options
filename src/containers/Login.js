@@ -1,23 +1,41 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
-class Login extends Component{
+class Login extends Component {
   state = {
-    userName: '',
     email: '',
+    password: ''
   }
-  handleChange = (e) => {
-
+  handleChange = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    })
+  }
+  handleSubmit = e => {
+    e.preventDefault()
+    alert('No backend attached login signup not available')
   }
   render() {
     return (
       <div className="container">
-        <h1 style={{textAlign: 'center'}}>Login</h1>
-        <form>
+        <h1 style={{ textAlign: 'center' }}>Login</h1>
+        <form onSubmit={this.handleSubmit}>
           <div className="row">
-            <div className="col" style={{textAlign: 'center'}}>
-              <input type="email" name="email" placeholder="Email"/>
-              <input type="password" name="password" placeholder="Password" />
+            <div className="col" style={{ textAlign: 'center' }}>
+              <input
+                onChange={this.handleChange}
+                value={this.state.email}
+                type="email"
+                name="email"
+                placeholder="Email"
+              />
+              <input
+                onChange={this.handleChange}
+                value={this.state.password}
+                type="password"
+                name="password"
+                placeholder="Password"
+              />
               <button type="submit">Login</button>
               <Link to="/reset-password">Forgot Password?</Link>
             </div>
